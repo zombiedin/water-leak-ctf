@@ -1,0 +1,67 @@
+# Common for all challenges sections
+category: ""
+value: 50
+type: standard
+extra:
+  connection_info: http://35.197.122.23
+
+# Required sections
+name: "Water Leak"
+description: |
+  Discover an IaC vulnerability.
+
+# Flags specify answers that your challenge use. You should generally provide
+# at least one.
+# Can be removed if unused
+# Accepts strings or dictionaries
+flags:
+  - SNYK{7843ecb17f23afdf2610f741aa07bd5958c616e4ac2a424eb14fa7478e1ea0cd}
+
+# Tags are used to classify your challenge with topics. You should provide at
+# least one.
+# Can be removed if unused
+# Accepts strings
+tags:
+  - aws
+  - Snyk IaC
+
+# Provide paths to files from the same directory that this file is in
+# Accepts strings
+#files:
+
+
+# Hints are used to give players a way to buy or have suggestions. They are not
+# required but can be nice.
+# Can be removed if unused
+# Accepts dictionaries or strings
+hints:
+  - {
+    content:
+      "Fork this repo and import into Snyk https://github.com/lcrowther-snyk/water-leak",
+    cost: 0
+  }
+  - {
+    content:
+      "The vulnerability realates to an S3 bucket.
+      <br>
+      A bucket with a public ACL or bucket policy is exposed to the entire internet.
+      This poses a security vulnerability, as any AWS user or anonymous user can access the data in the bucket.",
+    cost: 10
+  }
+  - {
+    content:
+      "When you added the main.tf file to Snyk, it did a scan of the AWS configuration. Any resource that is
+      misconfigured will generate an issue. The issue will contain the details of the misconfigured resource.
+      <br>
+      Given that we know this challenge is a vulnerability in an S3 bucket, look closely at the S3 issues,
+      particularly those that have a severity of 'High'.",
+    cost: 10
+  }
+
+# The state of the challenge.
+# This is visible by default. It takes two values: hidden, visible.
+state: hidden
+
+# Specifies what version of the challenge specification was used.
+# Subject to change until ctfcli v1.0.0
+version: "0.1"
